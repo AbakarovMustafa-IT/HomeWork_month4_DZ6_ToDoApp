@@ -46,6 +46,7 @@
 // Lesson 7 - ToDoApp
 
 export default function TodoList({ todos, activeTab, deleteTodo, editDone, editTodo }) {
+  // Filter tasks based on the selected tab
   const filteredTodos =
     activeTab === "All"
       ? todos
@@ -69,6 +70,7 @@ export default function TodoList({ todos, activeTab, deleteTodo, editDone, editT
               ) : (
                 <li>{entry.text}</li>
               )}
+              {/* Buttons based on the selected tab */}
               {activeTab === "Active" && (
                 <>
                   <button className="btn" onClick={() => editTodo(entry.text, prompt("Edit task:", entry.text))}>
@@ -79,7 +81,7 @@ export default function TodoList({ todos, activeTab, deleteTodo, editDone, editT
                   </button>
                 </>
               )}
-              {activeTab === "All" && (
+              {activeTab !== "Completed" && (
                 <button className="btn" onClick={() => deleteTodo(entry.text)}>
                   Delete
                 </button>
@@ -95,3 +97,5 @@ export default function TodoList({ todos, activeTab, deleteTodo, editDone, editT
     </>
   );
 }
+
+
